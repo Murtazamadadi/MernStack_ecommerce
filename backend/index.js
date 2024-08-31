@@ -21,11 +21,11 @@ mongoose.connect(process.env.MONGO).then(()=>{
 
 const app=express()
 // =============================================== Using core
-const cors = require('cors');
 app.use(cors({
   origin: process.env.FRONTENT_URL,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials:true
 }));
 
 
@@ -41,7 +41,7 @@ app.use("/api/pay",paymentRouter)
 
 
 // ============================================= MeddleWare for error handling
-app.use((err,rea,res,next)=>{
+app.use((err,req,res,next)=>{
    
     const statusCode=err.statusCode || 500;
     const message=err.message || "Internal Error";
