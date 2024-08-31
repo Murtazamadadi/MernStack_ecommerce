@@ -21,10 +21,13 @@ mongoose.connect(process.env.MONGO).then(()=>{
 
 const app=express()
 // =============================================== Using core
+const cors = require('cors');
 app.use(cors({
-    origin:process.env.FRONTENT_URL,
-    credentials:true
-}))
+  origin: process.env.FRONTENT_URL,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 
 app.use(express.json())
 app.use(cookieParser())
