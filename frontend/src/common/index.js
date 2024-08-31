@@ -1,4 +1,4 @@
-const backendDomin = "http://localhost:9900"
+const backendDomin = import.meta.env.VITE_REACT_APP_BACKEND_URL
 
 
 const SummaryApi = {
